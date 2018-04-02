@@ -3,10 +3,11 @@ from sanic.response import json
 import spacy
 
 app = Sanic()
+nlp = spacy.load('xx')
 
 @app.route('/', methods=['POST'])
 async def procesing(request):
-    nlp = spacy.load('xx')
+    
     doc = nlp('{}'.format(request.body))
     resp = {'entities': []}
     for ent in doc.ents:
